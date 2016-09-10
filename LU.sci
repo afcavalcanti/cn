@@ -1,13 +1,13 @@
-function [L,U]=LU(A, b)
+function [L,U]=LU(A)
     [l,c]= size(A);
-    U = A;
     L=eye(l,c);
-    for i=1:l
-        pivo = U(i,i);
-        for j=i+1:c
-            m = -U(j,i)/pivo;
-            L(j,i)=-m;
-           U(j,:)= U(j,:)+ m*U(i,:);
+    for j=1:(l-1)
+        pivo = A(j,j);
+        for i=j+1:l
+            fator = A(i,j)/pivo;
+            A(i,:)=A(i,:)-fator*A(j,:);
+            L(i,j)=fator;
            end
     end
+    U=A;
 endfunction
