@@ -1,0 +1,9 @@
+function [B, d] = obter(A, b)
+    [l,c] = size(A)
+    x=zeros(A)
+    for i=1:l
+    B(i,:)=A(i,:)/A(i,i);
+    d(i)=b(i)/A(i,i);
+    B(i,i)=0;
+    end
+endfunction
