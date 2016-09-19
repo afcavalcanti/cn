@@ -1,0 +1,15 @@
+function [x, it, Er]=seidel(A,b,itm,Er)
+    [l,c]=size(A)
+    xn=zeros(A)
+    x=xn;
+    [B,d]=obter(A,b);
+    Er=1;
+    it=0;
+    while Er>1 & it<itm;
+        for i=1:l
+            Ax=b;
+            x(i,:)=-B(i,:)*x-d(i);
+            it=it+1;
+            Er=(max(abs(x-xn)/max(x)));
+    end
+endfunction
