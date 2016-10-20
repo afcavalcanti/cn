@@ -1,0 +1,29 @@
+function coeficientes = coeficientesNewton (x,y)
+    nP=length(x)
+    T=zeros(nP,nP)
+    T(:,1)=y
+    for j = 2:nP
+        for i =1:(nP-j+1)
+            T(i,j)=(T(i+1,j-1)-T(i,j-1))/(x(j+i-1)-x(i))
+        end
+    end
+    coeficientes=T(1,:)
+endfunction
+
+function y = interpolacaoNewton(A,x,coeficientes)
+    y=coeficientes(1);
+    for i=2:length(coeficientes)
+        prodt=coeficientes(i);
+        for j=1:i-1
+            prodt = prodt*(A-x(j))
+        end
+        y=y+prodt
+    end
+endfunction
+
+x=[1.2 5.2 6.1 6.5 6.7 7.6 7.7]';
+y=[3.44 1.84 2.31 2.14 2 1.2 1.12]';
+coeficientes=coeficientesNewton (x,y)
+
+A= 1.5;
+y = interpolacaoNewton(A,x,coeficientes)
