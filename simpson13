@@ -1,0 +1,17 @@
+function y=fx(x)
+    y=(2*x-2)+3
+endfunction
+function [I]=simpson13(a,b,n)
+    h=(b-a)/2*n
+    x=a:h:b
+    I=0;
+    y=fx;
+    for i=1:n
+        I=I+y(i)+y(i+1)
+    end
+    for i=1:n-1
+        if modulo(i,2)==0
+           i=i+2*y(i);
+           end
+    end
+endfunction
