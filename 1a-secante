@@ -1,0 +1,16 @@
+function y=f(x)
+    y=
+endfunction
+function [x,i,er]=secante(x,x1,p)
+    i=0;
+    while (1)
+        i=i+1;
+        x0=x1;
+        x1=x;
+        x=x1-(x1-xo)*f(x1)/(f(x1)-f(x0))
+        er=abs((x-x1)/x)
+        if (er<(10^(-p)))
+            break;
+        end
+    end
+endfunction
