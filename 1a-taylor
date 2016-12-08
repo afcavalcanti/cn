@@ -1,0 +1,28 @@
+function y=f(x)
+    y=x.*sin(x)
+endfunction
+function y=f1(x)
+    y=sin(x)+x.*cos(x)
+endfunction
+function y=f2(x)
+    y=2*cos(x)-x.*sin(x)
+endfunction
+function y=f3(x)
+    y=-3*sin(x)-x.*cos(x)
+endfunction
+function [r]=taylor(x)
+    xo=0
+    r=f(xo)+f1(xo)*(x-xo)+(f2(xo)/factorial(2))*(x-xo)^2
+endfunction
+function r=resto(tau)
+    r = ((-3*sin(tau) - tau.*cos(tau))*(0.3)^3)/6
+endfunction
+
+//x = 0.25:0.001:0.35
+//xgrid
+//plot(x,f(x))
+//plot(x,taylor(x))
+
+tau=0:0.001:0.3
+plot(tau,resto(tau))
+abs(max(resto(0.3)))
