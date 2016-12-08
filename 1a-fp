@@ -1,0 +1,21 @@
+function y=f(x)
+    y=
+endfunction
+function [x,i,er]=fp(a,b,p)
+    i=0;
+    x=a;
+    while(1)
+        i=i+1;
+        xa=x;
+        x=a-(b-a)*f(a)/(f(b)-f(a))
+        if (f(a)*f(x))<0 then
+            b=x;
+        else
+            a=x;
+        end
+        er=abs((xa-x)/x)
+        if er<(10^(-p))
+            break;
+        end
+    end
+endfunction
