@@ -1,0 +1,18 @@
+function y=f(x)
+    y=
+endfunction
+function y=df(x)
+    y=
+endfunction
+function [x,i,er]=newton(x,p)
+    i=0;
+    while (1)
+        i=i+1;
+        xold=x;
+        x=xold-f(xold)/df(xold)
+        er=abs((xold-x)/x)
+        if er<(10^(-p))
+            break;
+        end
+    end
+endfunction
