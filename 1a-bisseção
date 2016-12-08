@@ -1,0 +1,21 @@
+function y=f(x)
+    y= 2*exp(-x) + 5*x.*exp(-x) - 1
+endfunction
+function [x,it,er]=bis(a,b,p)
+    x=a;
+    it=0;
+    while (1)
+        xold=x;
+        it=it+1;
+        x=(a+b)/2;
+        if f(a)*f(x)<0
+            b=x;
+        else
+            a=x;
+        end
+        er=abs((xold-x)/x)
+        if (er<10^(-p))
+            break;
+        end
+    end
+endfunction
